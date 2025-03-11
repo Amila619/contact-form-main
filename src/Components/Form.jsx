@@ -1,5 +1,7 @@
 export default function Form({ state, onInputChange, handleSubmit }) {
     return (
+        <>
+        <h1>Contact Us</h1>
         <form action="" onSubmit={handleSubmit}>
             <div>
                 <div>
@@ -44,5 +46,6 @@ export default function Form({ state, onInputChange, handleSubmit }) {
                 <button>Submit</button>
             </div>
         </form>
+        </>
     )
 }

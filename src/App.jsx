@@ -1,5 +1,9 @@
 import { useEffect, useReducer } from "react"
-import Form from "./Components/Form"
+import Form from "./components/Form"
+import RootLayout from "./layouts/RootLayout"
+import { Route, createBrowserRouter, createRoutesFromElements, RouterProvider } from "react-router-dom"
+import Home from "./pages/Home"
+import NotFound from "./pages/NotFound"
 
 const InitialState = {
   fname: '',
@@ -93,7 +97,7 @@ function App() {
     e.preventDefault();
     validateForm();
     console.log(state.errors);
-    
+
 
     if (Object.keys(state.errors).length === 0) {
       dispatch({
@@ -140,6 +144,18 @@ function App() {
     })
   }
 
+  const router = createBrowserRouter(
+    createRoutesFromElements(
+      <Route>
+        <Route paht="/" element={<RootLayout />} >
+          <Route index element={<Form onInputChange={onInputChange} state={state} handleSubmit={handleSubmit} />} />
+          <Route path="home" element={<Home />} />
+          <Route path="*" element={<NotFound />} />
+        </Route>
+      </Route>
+    )
+  )
+
   useEffect(() => {
     console.log('Form Validated: ', state.validated)
   }, [state.validated])
@@ -147,8 +163,7 @@ function App() {
 
   return (
     <div>
-      <h1>Contact us </h1>
-      <Form onInputChange={onInputChange} state={state} handleSubmit={handleSubmit} />
+      <RouterProvider router={router} />
     </div>
 
   )
