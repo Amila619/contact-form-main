@@ -92,6 +92,9 @@ function App() {
   function handleSubmit(e) {
     e.preventDefault();
     validateForm();
+    console.log(state.errors);
+    
+
     if (Object.keys(state.errors).length === 0) {
       dispatch({
         type: "setValidated",
@@ -117,36 +120,41 @@ function App() {
       if (!re.test(state.email)) {
         errors.email = 'Please enter a valid email address';
       }
-
-      if (state.qType.trim() === '') {
-        errors.qType = 'Please select a query type';
-      }
-      if (state.message.trim() === '') {
-        errors.message = 'This field is required';
-      }
-      if (!state.consent) {
-        errors.consent = 'To submit this form please consent to being contacted';
-      }
-
-        dispatch({
-          type: "setErrors",
-          payload: {
-            errors
-          }
-        })
-      }
     }
-  
-    useEffect(() => {
-      console.log('Form Validated: ', state.validated)
-    }, [state.validated])
-  
-    return (
-      <>
-        <h1>Hello </h1>
-        <Form onInputChange={onInputChange} state={state} handleSubmit={handleSubmit} />
-      </>
-    )
+
+    if (state.qType.trim() === '') {
+      errors.qType = 'Please select a query type';
+    }
+    if (state.message.trim() === '') {
+      errors.message = 'This field is required';
+    }
+    if (!state.consent) {
+      errors.consent = 'To submit this form please consent to being contacted';
+    }
+
+    dispatch({
+      type: "setErrors",
+      payload: {
+        errors: errors
+      }
+    })
   }
-  
-  export default App
+
+  useEffect(() => {
+    console.log('Form Validated: ', state.validated)
+  }, [state.validated])
+
+
+  return (
+    <div>
+      <h1>Contact us </h1>
+      <Form onInputChange={onInputChange} state={state} handleSubmit={handleSubmit} />
+    </div>
+
+  )
+
+}
+
+
+
+export default App
