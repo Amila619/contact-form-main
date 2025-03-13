@@ -7,7 +7,7 @@ export default function Home(){
 
     return(
         <div>
-            <h1>Welcome to Home</h1>
+            <h1>Data was successfully Submitted !</h1>
             <button onClick={() => navigate('/', )}>Form</button>
         </div>
     )

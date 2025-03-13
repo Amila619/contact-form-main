@@ -1,4 +1,72 @@
-export default function Form({ state, onInputChange, handleSubmit }) {
+import { useContext } from "react";
+import { Context } from "../context";
+
+export default function Form() {
+
+    const [state, dispatch] = useContext(Context);
+
+    function onInputChange(e, name) {
+      state.errors = {};
+        const value = name === "setConsent" ? e.target.checked : e.target.value;
+        dispatch({
+          type: name,
+          payload: {
+            input: value
+          }
+        })
+    
+      }
+    
+      function handleSubmit(e) {
+        e.preventDefault();
+        validateForm();
+    
+        if (Object.keys(state.errors).length === 0) {
+          dispatch({
+            type: "setValidated",
+            payload: {
+              input: true
+            }
+          })
+        }
+      }
+    
+      function validateForm() {
+        const errors = {};
+        if (state.fname.trim() === '') {
+          errors.fname = 'This field is required';
+        }
+        if (state.lname.trim() === '') {
+          errors.lname = 'This field is required';
+        }
+        if (state.email.trim() === '') {
+          errors.email = 'This field is required';
+        } else {
+          const re = /\S+@\S+\.\S+/;
+          if (!re.test(state.email)) {
+            errors.email = 'Please enter a valid email address';
+          }
+        }
+    
+        if (state.qType.trim() === '') {
+          errors.qType = 'Please select a query type';
+        }
+        if (state.message.trim() === '') {
+          errors.message = 'This field is required';
+        }
+        if (!state.consent) {
+          errors.consent = 'To submit this form please consent to being contacted';
+        }
+    
+    
+        dispatch({
+          type: "setErrors",
+          payload: {
+            input: errors
+          }
+        })
+      }    
+
     return (
         <>
         <h1>Contact Us</h1>
