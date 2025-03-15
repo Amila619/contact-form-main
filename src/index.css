@@ -1,1 +1,11 @@
 @import "tailwindcss";
+
+@theme {
+    --font-display: "Karla", sans-serif; 
+}
+
+@layer components {
+    .checkbox-container:has(input:checked) {
+      @apply focus:outline-none border-teal-800 bg-green-200;
+    }
+  }

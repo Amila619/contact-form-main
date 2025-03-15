@@ -1,4 +1,4 @@
-import Form from "./components/Form"
+import Form from "./Components/Form"
 import RootLayout from "./layouts/RootLayout"
 import { Route, createBrowserRouter, createRoutesFromElements, RouterProvider } from "react-router-dom"
 import Home from "./pages/Home"
@@ -16,9 +16,9 @@ function App() {
   )
 
   return (
-    <div>
-      <RouterProvider router={router} />
-    </div>
+    <main className="h-screen flex justify-center items-center bg-green-200 font-display mx-w-[1440px] w-full">
+        <RouterProvider router={router} />
+    </main> 
 
   )
 
