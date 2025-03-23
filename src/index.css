@@ -8,4 +8,5 @@
     .checkbox-container:has(input:checked) {
       @apply focus:outline-none border-teal-800 bg-green-200;
     }
+
   }
