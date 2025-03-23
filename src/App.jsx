@@ -16,7 +16,7 @@ function App() {
   )
 
   return (
-    <main className="h-screen flex justify-center items-center bg-green-200 font-display mx-w-[1440px] w-full">
+    <main className="h-screen flex justify-center items-center bg-green-200 font-display mx-w-[600px] md:mx-w-[1440px] w-full">
         <RouterProvider router={router} />
     </main> 
 

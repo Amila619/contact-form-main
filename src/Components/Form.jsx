@@ -73,22 +73,20 @@ export default function Form() {
   }
 
   return (
-    <div className="bg-white p-8 rounded-lg w-2/5">
+    <div className="bg-white p-8 rounded-lg my-5  mx-2.5">
       <h1 className="text-3xl font-bold text-gray-900 mb-4">Contact Us</h1>
       <form className="grid gap-3 text-gray-900" action="" onSubmit={handleSubmit}>
-        <div className="flex gap-2">
-          <div className="grid gap-2">
+        <div className="md:flex md:gap-2 grid gap-2.5">
+          <div className="grid gap-1.5">
             <label className="text-sm" htmlFor="fname">First Name * </label>
             <input className="border-gray-500 border-[1px] rounded-sm focus:outline-none focus:border-teal-800 p-1.5 w-full" type="text" name="fname" id="fname" value={state.fname} onChange={(e) => onInputChange(e, "setFname")} />
+            {state.errors.lname && <p className="text-red-600 text-xs">{state.errors.fname}</p>}
           </div>
-          <div className="grid gap-2">
+          <div className="grid gap-1.5">
             <label className="text-sm" htmlFor="lname">Last Name * </label>
             <input className="border-gray-500 border-[1px] rounded-sm focus:outline-none focus:border-teal-800 p-1.5 w-full" type="text" name="lname" id="lname" value={state.lname} onChange={(e) => onInputChange(e, "setLname")} />
+            {state.errors.fname && <p className="text-red-600 text-xs">{state.errors.lname}</p>}
           </div>
-        </div>
-        <div className="grid grid-cols-2">
-          {state.errors.lname && <p className="text-red-600 text-xs m-0">{state.errors.lname}</p>}
-          {state.errors.fname && <p className="text-red-600 text-xs m-0">{state.errors.fname}</p>}
         </div>
         <div className="grid gap-2">
           <label className="text-sm" htmlFor="email">Email * </label>
@@ -97,12 +95,12 @@ export default function Form() {
         </div>
         <div className="grid gap-2">
           <label className="text-sm" htmlFor="qtype">Query Type * </label>
-          <div className="flex gap-2">
-            <div className="flex items-center gap-1.5 border-gray-500 border-[1px] rounded-sm checkbox-container p-2.5 w-1/2">
+          <div className="md:flex grid gap-2">
+            <div className="flex items-center gap-1.5 border-gray-500 border-[1px] rounded-sm checkbox-container p-2.5 md:w-1/2">
               <input className="accent-teal-800" type="radio" value="General Enquiry" checked={state.qType === "General Enquiry"} onChange={(e) => onInputChange(e, 'setQType')} name="qType" id="generalQ" />
               <label className="text-sm" htmlFor="generalQ">Support Request</label>
             </div>
-            <div className="flex items-center gap-1.5 border-gray-500 border-[1px] rounded-sm checkbox-container p-2.5 w-1/2">
+            <div className="flex items-center gap-1.5 border-gray-500 border-[1px] rounded-sm checkbox-container p-2.5 md:w-1/2">
               <input className="accent-teal-800" type="radio" value="Support Request" checked={state.qType === "Support Request"} onChange={(e) => onInputChange(e, 'setQType')} name="qType" id="supprtQ" />
               <label className="text-sm" htmlFor="supprtQ">Support Request</label>
             </div>
@@ -111,7 +109,7 @@ export default function Form() {
         </div>
         <div className="grid gap-2">
           <label className="text-sm" htmlFor="message">Message * </label>
-          <textarea className="resize-none border-gray-500 border-[1px] rounded-sm focus:outline-none focus:border-teal-800 p-1.5" name="message" id="message" value={state.message} onChange={(e) => onInputChange(e, "setMessage")}></textarea>
+          <textarea className="resize-none border-gray-500 border-[1px] rounded-sm focus:outline-none focus:border-teal-800 p-1.5 md:w-full h-[200px]" name="message" id="message" value={state.message} onChange={(e) => onInputChange(e, "setMessage")}></textarea>
           {state.errors.message && <p className="text-red-600 text-xs">{state.errors.message}</p>}
         </div>
         <div className="grid gap-2">
