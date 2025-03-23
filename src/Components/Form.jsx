@@ -73,9 +73,9 @@ export default function Form() {
   }
 
   return (
-    <div className="bg-white p-8 rounded-lg my-5  mx-2.5">
+    <div className="bg-white p-8 rounded-lg my-4 mx-2.5 mx-w-[580px]">
       <h1 className="text-3xl font-bold text-gray-900 mb-4">Contact Us</h1>
-      <form className="grid gap-3 text-gray-900" action="" onSubmit={handleSubmit}>
+      <form className="grid gap-3 text-gray-900 w-full" action="" onSubmit={handleSubmit}>
         <div className="md:flex md:gap-2 grid gap-2.5">
           <div className="grid gap-1.5">
             <label className="text-sm" htmlFor="fname">First Name * </label>
