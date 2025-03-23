@@ -1,9 +1,12 @@
-import { useEffect, useContext } from "react";
+import { useEffect, useContext, useRef } from "react";
 import { Context } from "../context";
+import { useNavigate } from "react-router-dom";
 
 export default function Form() {
 
   const [state, dispatch] = useContext(Context);
+  const inputRef = useRef();
+  const navigate = useNavigate();
 
   function onInputChange(e, name) {
     const value = name === "setConsent" ? e.target.checked : e.target.value;
@@ -18,23 +21,19 @@ export default function Form() {
 
   function handleSubmit(e) {
     e.preventDefault();
-    validateForm();
-
-    if (Object.keys(state.errors).length === 0) {
-      dispatch({
-        type: "setValidated",
-        payload: {
-          input: true
-        }
-      })
-    }
+    validateForm();    
+    
   }
 
   useEffect(() => {
     if (state.validated && Object.keys(state.errors).length === 0) {
-      alert("Form submitted successfully")
+      setTimeout(() => {
+        navigate('/home');
+        window.location.reload();
+        state.validated = false;
+      }, 1500);
     }
-  }, [state.errors, state.validated])
+  }, [state.validated, state.errors])
 
   function validateForm() {
     const errors = {};
@@ -61,21 +60,31 @@ export default function Form() {
     }
     if (!state.consent) {
       errors.consent = 'To submit this form please consent to being contacted';
+    }    
+    
+    if (Object.keys(errors).length === 0) {
+      dispatch({
+        type: "setValidated",
+        payload: {
+          input: true
+        }
+      })
     }
 
-
+    
     dispatch({
       type: "setErrors",
       payload: {
         input: errors
       }
     })
+    
   }
 
   return (
     <div className="bg-white md:p-8 p-6 rounded-lg">
       <h1 className="md:text-3xl text-2xl font-bold text-gray-900 mb-4">Contact Us</h1>
-      <form className="grid gap-3 text-gray-900 w-full" action="" onSubmit={handleSubmit}>
+      <form ref={inputRef} className="grid gap-3 text-gray-900 w-full" action="" onSubmit={handleSubmit}>
         <div className="md:flex md:gap-2 grid gap-2.5 md:justify-between">
           <div className="grid gap-1.5 md:w-1/2">
             <label className="md:text-sm text-xs" htmlFor="fname">First Name * </label>

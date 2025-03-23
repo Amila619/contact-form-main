@@ -7,8 +7,8 @@ export default function Home(){
 
     return(
         <div className="grid gap-4 bg-white rounded-sm p-4">
-            <h1 className="text-2xl font-bold">Data was successfully Submitted !</h1> 
-            <button className="bg-teal-700 font-bold text-white w-full p-2 rounded-sm hover:bg-teal-600 cursor-pointer" onClick={() => navigate('/', )}>Form</button>
+            <h1 className="text-xl md:text-2xl font-bold">Data was successfully Submitted !</h1> 
+            <button className="bg-teal-700 font-bold md:text-base text-sm text-white w-full p-2 rounded-sm hover:bg-teal-600 cursor-pointer" onClick={() => navigate('/', )}>Form</button>
         </div>
     )
 }
