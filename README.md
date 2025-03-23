@@ -34,8 +34,8 @@ Users should be able to:
 
 ### Links
 
-- Solution URL: [Add solution URL here](https://your-solution-url.com)
-- Live Site URL: [Add live site URL here](https://your-live-site-url.com)
+- Solution URL: [https://github.com/Amila619/contact-form-main](https://github.com/Amila619/contact-form-main)
+- Live Site URL: [https://contact-form-main-green.vercel.app/](https://contact-form-main-green.vercel.app/)
 
 ## My process
 
@@ -55,5 +55,5 @@ Im hoping to advance this with a backend building a API using flask and mongodb.
 
 ## Author
 
-- Website - [Add your name here](https://www.your-site.com)
-- Frontend Mentor - [@yourusername](https://www.frontendmentor.io/profile/yourusername)
+- Website - [Amila Sandeepa](https://github.com/Amila619)
+- Frontend Mentor - [@Amila619](https://www.frontendmentor.io/profile/Amila619)
